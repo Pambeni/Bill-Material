@@ -28,30 +28,6 @@
     <meta name="twitter:creator" content="@creativetim">
     <meta name="twitter:image" content="../../../s3.amazonaws.com/creativetim_bucket/products/51/opt_mdp_thumbnail.jpg">
     <!-- Open Graph data -->
-    <style>
-    .center {
-    margin-top:50px;   
-}
-
-.modal-header {
-	padding-bottom: 5px;
-}
-
-.modal-footer {
-    	padding: 0;
-	}
-    
-.modal-footer .btn-group button {
-	height:40px;
-	border-top-left-radius : 0;
-	border-top-right-radius : 0;
-	border: none;
-	border-right: 1px solid #ddd;
-}
-	
-.modal-footer .btn-group:last-child > button {
-	border-right: 0;
-}</style>
     <meta property="fb:app_id" content="655968634437471">
     <meta property="og:title" content="Material Dashboard PRO by Creative Tim | Premium Bootstrap Admin Template" />
     <meta property="og:type" content="article" />
@@ -68,8 +44,32 @@
     <!--     Fonts and icons     -->
     <link href="../assets/css/font-awesome.css" rel="stylesheet" />
     <link href="../assets/css/google-roboto-300-700.css" rel="stylesheet" />
+    <style>
+        .center {
+        margin-top:50px;   
+    }
+    
+    .modal-header {
+        padding-bottom: 5px;
+    }
+    
+    .modal-footer {
+            padding: 0;
+        }
+        
+    .modal-footer .btn-group button {
+        height:40px;
+        border-top-left-radius : 0;
+        border-top-right-radius : 0;
+        border: none;
+        border-right: 1px solid #ddd;
+    }
+        
+    .modal-footer .btn-group:last-child > button {
+        border-right: 0;
+    }</style>
 </head>
-
+ 
 <body>
     <div class="wrapper">
         <div class="sidebar" data-active-color="green" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">
@@ -151,6 +151,13 @@
                         <a href="widgets.html">
                             <i class="fa fa-user"></i>
                             <p>User Management</p>
+                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html">
+                            <i class="fa fa-dollar"></i>
+                            <p>Debt Management</p>
                             
                         </a>
                     </li>
@@ -323,7 +330,7 @@
                 <div class="modal-body">
 
                     <!-- content goes here -->
-                    <form action="billboards.php">
+                    <form action="billboards.html">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Select Scheme</label>
                             <select name="scheme" class="form-control">
@@ -345,7 +352,7 @@
                             <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
                         </div>
                         <div class="btn-group" role="group">
-                            <button type="button" id="saveImage" class="btn btn-primary btn-hover-green" data-action="save" role="button">Save</button>
+                            <button type="submit" id="saveImage" class="btn btn-primary btn-hover-green" data-action="save" role="button">Save</button>
                         </div>
                     </div>
                 </div>

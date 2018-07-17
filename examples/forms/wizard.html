@@ -42,6 +42,8 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="../../assets/css/demo.css" rel="stylesheet" />
     <!--     Fonts and icons     -->
+    <link href="../../assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../assets/css/google-roboto-300-700.css" rel="stylesheet" />
     <style>
             .center {
             margin-top:50px;   
@@ -53,7 +55,7 @@
         
         .modal-footer {
                 padding: 0;
-            }
+            } 
             
         .modal-footer .btn-group button {
             height:40px;
@@ -65,9 +67,7 @@
             
         .modal-footer .btn-group:last-child > button {
             border-right: 0;
-        }</style>
-    <link href="../../assets/css/font-awesome.css" rel="stylesheet" />
-    <link href="../../assets/css/google-roboto-300-700.css" rel="stylesheet" />
+        }</style>    
 </head>
 
 <body>
@@ -454,6 +454,11 @@
 <script type="text/javascript">
     $().ready(function() {
         demo.initMaterialWizard();
+        
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+        demo.initVectorMap();
     });
 </script>
 
