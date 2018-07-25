@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 
-
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:29:18 GMT -->
+<?php  session_start();if(!isset($_SESSION['username'])) { header('location:index.html');} ?>
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:29:18 GMT -->
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
@@ -81,12 +81,12 @@
         Tip 3: you can change the color of the sidebar with data-background-color="white | black"
     -->
             <div class="logo">
-                <a href="dashboard.html" class="simple-text">
+                <a href="dashboard.php" class="simple-text">
                     Billboard System
                 </a>
             </div>
             <div class="logo logo-mini">
-                <a href="dashboard.html" class="simple-text">
+                <a href="dashboard.php" class="simple-text">
                     BMS
                 </a>
             </div>
@@ -97,7 +97,7 @@
                     </div>
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                            Timothy Ngorima
+                           <?php echo $_SESSION['name'] ?>
                             <b class="caret"></b>
                         </a>
                         <div class="collapse" id="collapseExample">
@@ -117,7 +117,7 @@
                 </div>
                 <ul class="nav">
                     <li class="active">
-                        <a href="dashboard.html">
+                        <a href="dashboard.php">
                             <i class="material-icons">account_balance</i>
                             <p>Dashboard</p>
                         </a>
@@ -210,8 +210,8 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="material-icons">person</i>
+                                <a href="logout.php"  >
+                                    <i class="fa fa-power-off"></i>
                                     <p class="hidden-lg hidden-md">Profile</p>
                                 </a>
                             </li>
@@ -340,7 +340,7 @@
                   </div>
                   <div class="modal-body">
                      <!-- content goes here -->
-                     <form action="registration.html">
+                     <form action="registration.php">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Select Scheme</label>
                            <select name="scheme" class="form-control selectpicker">
@@ -376,7 +376,7 @@
                      </div>
                      <div class="modal-body">
                         <!-- content goes here -->
-                        <form action="billboards.html">
+                        <form action="billboards.php">
                            <div class="form-group">
                               <label for="exampleInputEmail1">Select Scheme</label>
                               <select name="scheme" class="form-control selectpicker">
@@ -505,5 +505,5 @@
 </script>
 
 
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:32:16 GMT -->
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:32:16 GMT -->
 </html>

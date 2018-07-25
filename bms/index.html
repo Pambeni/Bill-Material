@@ -62,7 +62,7 @@
                 <ul class="nav navbar-nav navbar-right">
                    
                     <li class="">
-                        <a href="register.php">
+                        <a href="register.html">
                             <i class="material-icons">person_add</i> Register
                         </a>
                     </li>
@@ -87,7 +87,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="POST" action="dashboard.html">
+                            <form method="POST" action="php/login.php">
                                 <div class="card card-login card-hidden">
                                     <div class="card-header text-center" data-background-color="rose">
                                         <h4 class="card-title">Login</h4>
@@ -104,7 +104,7 @@
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Username</label>
-                                                <input type="text" class="form-control">
+                                                <input required name="username" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="input-group">
@@ -113,7 +113,7 @@
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Password</label>
-                                                <input type="password" class="form-control">
+                                                <input required name="password" type="password" class="form-control">
                                             </div>
                                         </div>
                                     </div>

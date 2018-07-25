@@ -1,7 +1,7 @@
 <?php if (isset($_POST["password"])) {
                 require '../connect2db.php';
                 
-                $name = $_POST["password"];
+                $name = $_POST["name"];
                 $access_code = $_POST["access_code"];
                 $username = $_POST["username"];
                 $email = $_POST["email"];
@@ -13,7 +13,7 @@
                 if($query){
                     echo '<script type="text/javascript">'; 
                     echo 'alert("Account Created Succesfully. Login to Proceed!!");'; 
-                    echo "window.location.href = 'index.html';";
+                    echo "window.location.href = '../index.html';";
                     echo '</script>'; 
                 }
             }

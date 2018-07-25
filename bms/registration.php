@@ -1,8 +1,23 @@
 <!doctype html>
 <html lang="en">
 
+<?php  session_start();if(!isset($_SESSION['username'])) { header('location:index.html');}
+require 'connect2db.php';
+$connection=  mysqli_query($con, "SELECT * FROM `clients`");
+// This action will execute if a user is selected from the select customer modal and populate the selected client details on the form
+if(isset($_GET['x'])) {
+    $id = $_GET['id'];
+    $connect = mysqli_query($con, "SELECT * FROM `clients` where id =$id");
 
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:29:18 GMT -->
+    $detail=  mysqli_fetch_array($connect);
+    $clientname = $detail['name'];
+    $clientemail = $detail['email'];
+    $clientaddress = $detail['address'];
+    $clientphone = $detail['phone'];
+    $clientid = $detail['id'];
+}
+?>
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:29:18 GMT -->
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
@@ -79,12 +94,12 @@
                 Tip 3: you can change the color of the sidebar with data-background-color="white | black"
             -->
                     <div class="logo">
-                        <a href="dashboard.html" class="simple-text">
+                        <a href="dashboard.php" class="simple-text">
                             Billboard System
                         </a>
                     </div>
                     <div class="logo logo-mini">
-                        <a href="dashboard.html" class="simple-text">
+                        <a href="dashboard.php" class="simple-text">
                             BMS
                         </a>
                     </div>
@@ -95,7 +110,7 @@
                             </div>
                             <div class="info">
                                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                                    Timothy Ngorima
+                                <?php echo $_SESSION['name'] ?>
                                     <b class="caret"></b>
                                 </a>
                                 <div class="collapse" id="collapseExample">
@@ -115,7 +130,7 @@
                         </div>
                         <ul class="nav">
                             <li>
-                                <a href="dashboard.html">
+                                <a href="dashboard.php">
                                     <i class="material-icons">account_balance</i>
                                     <p>Dashboard</p>
                                 </a>
@@ -208,8 +223,8 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-                                            <i class="material-icons">person</i>
+                                        <a href="logout.php"  >
+                                            <i class="fa fa-power-off"></i>
                                             <p class="hidden-lg hidden-md">Profile</p>
                                         </a>
                                     </li>
@@ -234,7 +249,7 @@
                         <!--      Wizard container        -->
                         <div class="wizard-container">
                             <div class="card wizard-card" data-color="rose" id="wizardProfile">
-                                <form action="#" method="">
+                                <form action="#" method="post">
                                     <!--        You can switch " data-color="purple" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
                                     <div class="wizard-header">
                                         <h3 class="wizard-title">
@@ -273,32 +288,32 @@
                                                      <br/>
                                                      <div class="form-row">
                                                         <div class="form-group col-md-6">
-                                                          
-                                                           <input type="email" class="form-control" id="inputEmail4" reqired placeholder="Name of Customer">
+                                                        <label >Client Name</label>
+                                                           <input required name="name" <?php if(isset($_GET['x'])) { echo "value='$clientname'";} ?>type="text" class="form-control" id="inputEmail4"  >
                                                         </div>
                                                         <div class="form-group col-md-6">
-                                                           
-                                                           <input type="password" class="form-control" id="inputPassword4" placeholder="Customer ID">
-                                                        </div>
-                                                     </div>
-                                                     <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                           
-                                                           <input type="email" class="form-control" id="inputEmail4" placeholder="Contact Number">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                           
-                                                           <input type="password" class="form-control" id="inputPassword4" placeholder="Email Address">
+                                                        <label >Client ID</label>
+                                                           <input name="id" disabled <?php if(isset($_GET['x'])) { echo "value='$clientid'";} else{echo "value='Unregistered'";} ?> type="text" class="form-control" id="inputPassword4" >
                                                         </div>
                                                      </div>
                                                      <div class="form-row">
                                                         <div class="form-group col-md-6">
-                                                         
-                                                           <textarea class="form-control" cols="4" id="inputEmail4" placeholder="Physical Address"></textarea>
+                                                           <label >Phone Number</label>
+                                                           <input required name="phone" <?php if(isset($_GET['x'])) { echo "value='$clientphone'";} ?> type="text" class="form-control" id="inputEmail4" >
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                        <label >Email Address </label>
+                                                           <input required name="email" <?php if(isset($_GET['x'])) { echo "value='$clientemail'";} ?> type="email" class="form-control" id="inputPassword4" >
+                                                        </div>
+                                                     </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                        <label >Client Physical Address</label>
+                                                           <input required name="address" <?php if(isset($_GET['x'])) { echo "value='$clientaddress'";} ?> class="form-control" cols="4" id="inputEmail4" >
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                            
-                                                           <textarea class="form-control" id="inputPassword4" placeholder="Brief Description"></textarea>
+                                                           <textarea name="description" class="form-control" id="inputPassword4" placeholder="Brief Description"></textarea>
                                                         </div>
                                                      </div>
                                                     
@@ -309,21 +324,21 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                    
-                                                   <input type="email" class="form-control"  placeholder="Name of Customer">
+                                                   <input name="province" type="text" class="form-control"  placeholder="Province">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                  
-                                                   <input type="password" class="form-control"  placeholder="Customer ID">
+                                                   <input name="city" type="text" class="form-control"  placeholder="City">
                                                 </div>
                                              </div>
                                              <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                    
-                                                   <input type="email" class="form-control" placeholder="Contact Number">
+                                                   <input name="town" type="email" class="form-control" placeholder="Town">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                    
-                                                   <input type="password" class="form-control" placeholder="Email Address">
+                                                   <input name="village" type="password" class="form-control" placeholder="Village">
                                                 </div>
                                              </div>
                                         </div>
@@ -332,7 +347,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-8 ">
                                                    
-                                                   <input type="number" class="form-control"  placeholder="Additional Fee">
+                                                   <input name="additional" type="number" class="form-control"  placeholder="Additional Fee">
                                                 </div>
                                              </div>
                                         </div>
@@ -340,7 +355,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-8 col-md-offset-3">
                                                    <label for="inputEmail4" style=" text-align: center;"></label>
-                                                   <input type="number" class="form-control" id="inputEmail4" placeholder="Debt Owed">
+                                                   <input name="debt" type="number" class="form-control" id="inputEmail4" placeholder="Debt Owed">
                                                 </div>
                                              </div>
                                         </div>
@@ -358,7 +373,7 @@
                                     <div class="wizard-footer">
                                         <div class="pull-right">
                                             <input type='button' class='btn btn-next btn-fill btn-rose btn-wd' name='next' value='Next' />
-                                            <input type='button' class='btn btn-finish btn-fill btn-rose btn-wd' name='finish' value='Finish' />
+                                            <input type='submit' class='btn btn-finish btn-fill btn-rose btn-wd' name='finish' value='Finish' />
                                         </div>
                                         <div class="pull-left">
                                             <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />
@@ -389,7 +404,7 @@
                   </div>
                   <div class="modal-body">
                      <!-- content goes here -->
-                     <form action="registration.html">
+                     <form action="registration.php">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Select Scheme</label>
                            <select name="scheme" class="form-control selectpicker">
@@ -477,40 +492,30 @@
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Age</th>
-                                                    <th>Date</th>
+                                                    <th>Address</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Debt</th>
                                                  
                                                 </tr>
                                             </thead>
                                            
                                             <tbody>
+                                            <?php 
+                                            while($row =mysqli_fetch_array($connection))
+    
+                                                         {
+                                            extract($row);
+                                            ?>
                                                 <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
+                                                <td><a href="registration.php?<?php echo "id=$id&x=1"?>"> <?php echo $name?></a></td>
+                                                    <td><a href="registration.php?<?php echo "id=$id&x=1"?>"><?php echo $address?></a></td>
+                                                    <td><a href="registration.php?<?php echo "id=$id&x=1"?>"><?php echo $email?></a></td>
+                                                    <td><a href="registration.php?<?php echo "id=$id&x=1"?>"><?php echo $phone?></a></td>
+                                                    <td><a href="registration.php?<?php echo "id=$id&x=1"?>">$<?php echo $debt?></a></td>
                                                     
                                                 </tr>
-                                                <tr>
-                                                    <td>Garrett Winters</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>63</td>
-                                                    <td>2011/07/25</td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                    <td>Ashton Cox</td>
-                                                    <td>Junior Technical Author</td>
-                                                    <td>San Francisco</td>
-                                                    <td>66</td>
-                                                    <td>2009/01/12</td>
-                                                   
-                                                </tr>
-                                         
+                                                         <?php }?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -683,5 +688,5 @@
     });
 </script>
 
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:32:16 GMT -->
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:32:16 GMT -->
 </html>
