@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/pages/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:32:19 GMT -->
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/pages/register.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:32:19 GMT -->
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
@@ -56,13 +56,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../dashboard.html">MBillboard Management System</a>
+                <a class="navbar-brand" href="../dashboard.html">Billboard Management System</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                    
                     <li class=" active ">
-                        <a href="register.html">
+                        <a href="register.php">
                             <i class="material-icons">person_add</i> Register
                         </a>
                     </li>
@@ -127,43 +127,43 @@
                                 </div>
                                 <div class="col-md-5">
                                     
-                                    <form class="form" method="" action="#">
+                                    <form class="form" method="post" action="php/registersubmit.php">
                                         <div class="card-content">
                                                 <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <i class="material-icons">code</i>
                                                         </span>
-                                                        <input type="text" class="form-control" placeholder="User Access Code...">
+                                                        <input required name="access_code" type="text" class="form-control" placeholder="User Access Code...">
                                                     </div>
                                                     <div class="input-group">
                                                             <span class="input-group-addon">
                                                                 <i class="material-icons">face</i>
                                                             </span>
-                                                            <input type="text" class="form-control" placeholder="First Name...">
+                                                            <input required name="name" type="text" class="form-control" placeholder="First Name...">
                                                         </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">visibility</i>
                                                 </span>
-                                                <input type="text" class="form-control" placeholder="Username...">
+                                                <input name="username" required type="text" class="form-control" placeholder="Username...">
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">email</i>
                                                 </span>
-                                                <input type="text" class="form-control" placeholder="Email...">
+                                                <input name="email"  type="email" class="form-control" placeholder="Email...">
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
-                                                <input type="password" placeholder="Password..." class="form-control" />
+                                                <input name="password" required type="password" placeholder="Password..." class="form-control" />
                                             </div>
                                             <div class="input-group">
                                                     <span class="input-group-addon">
                                                         <i class="material-icons">lock_outline</i>
                                                     </span>
-                                                    <input type="password" placeholder="Confirm Password" class="form-control" />
+                                                    <input type="password" required placeholder="Confirm Password" class="form-control" />
                                                 </div>
                                             <!-- If you want to add a checkbox to this form, uncomment this code -->
                                             <div class="checkbox">
@@ -174,7 +174,7 @@
                                             </div>
                                         </div>
                                         <div class="footer text-center">
-                                            <a href="#pablo" class="btn btn-primary btn-round">Get Started</a>
+                                            <button type="submit" class="btn btn-primary btn-round">Get Started</button>
                                         </div>
                                     </form>
                                 </div>
@@ -197,6 +197,8 @@
                 </footer>
         </div>
     </div>
+    <!-- Php code to handle Registration -->
+   
 </body>
 
 </body>
@@ -254,5 +256,5 @@
 </script>
 
 
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/pages/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:32:57 GMT -->
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/pages/register.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:32:57 GMT -->
 </html>
