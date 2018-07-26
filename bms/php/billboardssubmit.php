@@ -15,7 +15,7 @@
                 $town = $_POST["town"];
                 $address="$number $street $area $town";
 
-                $sql = "INSERT INTO `billboards` (`type`, `scheme`,`address`,`status`, `length`, `signage`, `width`) VALUES ( '$type','$scheme', '$address','$status', '$length', '$signage', '$width')";
+                $sql = "INSERT INTO `billboards` (`type`, `scheme`,`address`,`status`, `length`, `signage`, `width`, `height`) VALUES ( '$type','$scheme', '$address','$status', '$length', '$signage', '$width', '$height')";
                 $query = mysqli_query($con,$sql);
                 $id = mysqli_insert_id($con);
                 $id = "BMS2018-$id" ;

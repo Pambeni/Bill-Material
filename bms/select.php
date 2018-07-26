@@ -4,6 +4,7 @@
 <?php  session_start();if(!isset($_SESSION['username'])) { header('location:index.html');}
 require 'connect2db.php';
 $connection=  mysqli_query($con, "SELECT * FROM `clients`");
+$newid = $_GET['newid'];
 // This action will execute if a user is selected from the select customer modal and populate the selected client details on the form
 if(isset($_GET['x'])) {
     $id = $_GET['id'];
@@ -247,146 +248,71 @@ if(isset($_GET['x'])) {
             <div class="content">
                 <div class="container-fluid">
                    <div class="col-sm-12 ">
-                        <!--      Wizard container        -->
-                        <div class="wizard-container">
-                            <div class="card wizard-card" data-color="rose" id="wizardProfile">
-                                <form action="php/registrationsubmit.php" method="post">
-                                    <!--        You can switch " data-color="purple" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
-                                    <div class="wizard-header">
-                                        <h3 class="wizard-title">
-                                           Register Billboards To Clients
-                                        </h3>
-                                        <h5>Please Ensure that all necessary fields are filled.</h5>
+                      
+                   <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="purple">
+                                    <i class="material-icons">assignment</i>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Select Billboard</h4>
+                                    <div class="toolbar">
+                                        <!--        Here you can write extra buttons/actions for the toolbar              -->
                                     </div>
-                                    <div class="wizard-navigation">
-                                        <ul>
-                                            <li>
-                                                <a href="#about" data-toggle="tab">Basic Parameters</a>
-                                            </li>
-                                            <li>
-                                                <a href="#account" data-toggle="tab">District</a>
-                                            </li>
-                                            <li>
-                                                <a href="#address" data-toggle="tab">Additional Fee</a>
-                                            </li>
-                                            <li>
-                                                    <a href="#debt" data-toggle="tab">Debt</a>
-                                                </li>
-                                               
-                                        </ul>
-                                    </div>
-                                    <div class="tab-content">
-                                        <div class="tab-pane" id="about">
-                                                <div class="form-row">
-                                                        <div class="form-group col-md-10">
-                                                                <a  data-toggle="modal" data-target="#squarespaceModal2"> <button class="btn btn-lg btn-primary" style=" margin: -60px -50px; 
-                                                              position:relative;    top:50%;   left:50%;" type="button"> <i class="menu-icon fa fa-search"></i> Search Customer</button></a>
-                                                           <br/>
-                                                        </div>
-                                                     </div>
-                                                     <br/>
-                                                     <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                        <label >Client Name</label>
-                                                           <input required name="name" <?php if(isset($_GET['x'])) { echo " value='$clientname'";} ?> type="text" class="form-control" id="inputEmail4"  >
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                        <label >Client ID</label>
-                                                           <input name="id"  <?php if(isset($_GET['x'])) { echo "value='$clientid' ";} else{echo "value='Unregistered'";} ?> type="text" class="form-control" id="inputPassword4" >
-                                                        </div>
-                                                     </div>
-                                                     <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                           <label >Phone Number</label>
-                                                           <input required name="phone" <?php if(isset($_GET['x'])) { echo "value='$clientphone' ";} ?> type="text" class="form-control" id="inputEmail4" >
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                        <label >Email Address </label>
-                                                           <input required name="email" <?php if(isset($_GET['x'])) { echo "value='$clientemail' ";} ?> type="email" class="form-control" id="inputPassword4" >
-                                                        </div>
-                                                     </div>
-                                                     <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                        <label >Client Physical Address</label>
-                                                           <input required name="address" <?php if(isset($_GET['x'])) { echo "value='$clientaddress' ";} ?> class="form-control" cols="4" id="inputEmail4" >
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                           
-                                                           <textarea name="description" class="form-control" id="inputPassword4" placeholder="Brief Description"></textarea>
-                                                        </div>
-                                                     </div>
-                                                    
-                                                  
-                                        </div>
-                                        <div class="tab-pane" id="account">
-                                            <h4 class="info-text"> District Details </h4>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                   
-                                                   <input name="province" type="text" class="form-control"  placeholder="Province">
-                                                </div>
-                                                <div class="form-group col-md-6">
+                                    <div class="material-datatables">
+                                        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Type</th>
+                                                    <th>Address</th>
+                                                    <th>Dimensions</th>
+                                                    <th>Signage</th>
+                                                    <th>Status</th>
                                                  
-                                                   <input name="city" type="text" class="form-control"  placeholder="City">
-                                                </div>
-                                             </div>
-                                             <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                   
-                                                   <input name="town" type="text" class="form-control" placeholder="Town">
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                   
-                                                   <input name="village" type="text" class="form-control" placeholder="Village">
-                                                </div>
-                                             </div>
-                                        </div>
-                                        <div class="tab-pane" id="address">
-                                                <h4 class="info-text"> Any Additional Fee? </h4>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-8 ">
-                                                   
-                                                   <input name="additional" type="number" class="form-control"  placeholder="Additional Fee">
-                                                </div>
-                                             </div>
-                                        </div>
-                                        <div class="tab-pane" id="debt">
-                                            <div class="form-row">
-                                                <?php if(isset($_GET['x'])) {  ?>
-                                                <div class="form-group col-md-8 col-md-offset-3">
-                                                   <label for="inputEmail4" style=" text-align: center;">Current Debt</label>
-                                                   <input name="current"  type="text" class="form-control" id="inputEmail4" value="$<?php echo $detail['debt']; ?> ">
-                                                </div>
-                                                <?php }?>
-                                                <div class="form-group col-md-8 col-md-offset-3">
-                                                   <label for="inputEmail4" style=" text-align: center;">New Debt</label>
-                                                   <input name="debt" type="number" class="form-control" id="inputEmail4" >
-                                                </div>
-                                             </div>
-                                        </div>
-                                       
+                                                </tr>
+                                            </thead>
+                                           
+                                            <tbody>
+                                            <?php 
+                                           $billy = mysqli_query($con, "SELECT * FROM `billboards`");
+
+                                          
+                                            while($bill =mysqli_fetch_array($billy)) {
+                                                           
+                                                $billtype = $bill['type'];
+                                                $billsignage = $bill['signage'];
+                                                $billstatus = $bill['status'];
+                                                $billaddress = $bill['address'];
+                                                $length = $bill['length'];
+                                                $width = $bill['width'];
+                                                $billid = $bill['id'];
+                                                $height = $bill['height'];
+                                                $dimension = "$length X $width X $height";
+                                                        
+                                            ?>
+                                                <tr>
+                                                
+                                                <td><a href="php/update.php?<?php echo "id=$newid&billid=$billid"?>"> <?php echo $billtype?></a></td>
+                                                    <td><a href="php/update.php?<?php echo "id=$newid&x=1"?>"><?php echo $billaddress?></a></td>
+                                                    <td><a href="php/update.php?<?php echo "id=$newid&x=1"?>"><?php echo $dimension?></a></td>
+                                                    <td><a href="php/update.php?<?php echo "id=$newid&x=1"?>"><?php echo $billsignage?></a></td>
+                                                    <td><?php echo $billstatus?></td>
+                                                    
+                                                </tr>
+                                                         <?php }?>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div class="wizard-footer">
-                                        <div class="pull-right">
-                                            <input type='button' class='btn btn-next btn-fill btn-rose btn-wd' name='next' value='Next' />
-                                            <input type='submit' class='btn btn-finish btn-fill btn-rose btn-wd' name='finish' value='Finish' />
-                                        </div>
-                                        <div class="pull-left">
-                                            <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </form>
+                                </div>
+                                <!-- end content-->
                             </div>
+                            <!--  end card  -->
                         </div>
-                        <!-- wizard container -->
-                    </div>
-                </div>
-                    
-                    
+
+
+                   </div>
                 </div>
             </div>
-            
         </div>
     </div>
     
@@ -504,11 +430,11 @@ if(isset($_GET['x'])) {
                                             extract($row);
                                             ?>
                                                 <tr>
-                                                <td><a href="registration.php?<?php echo "id=$id&x=1"?>"> <?php echo $name?></a></td>
-                                                    <td><a href="registration.php?<?php echo "id=$id&x=1"?>"><?php echo $address?></a></td>
-                                                    <td><a href="registration.php?<?php echo "id=$id&x=1"?>"><?php echo $email?></a></td>
-                                                    <td><a href="registration.php?<?php echo "id=$id&x=1"?>"><?php echo $phone?></a></td>
-                                                    <td><a href="registration.php?<?php echo "id=$id&x=1"?>">$<?php echo $debt?></a></td>
+                                                <td><a href="php/update.php?<?php echo "id=$newid&x=1"?>"> <?php echo $name?></a></td>
+                                                    <td><a href="php/update.php?<?php echo "id=$newid&x=1"?>"><?php echo $address?></a></td>
+                                                    <td><a href="php/update.php?<?php echo "id=$newid&x=1"?>"><?php echo $email?></a></td>
+                                                    <td><a href="php/update.php?<?php echo "id=$newid&x=1"?>"><?php echo $phone?></a></td>
+                                                    <td><a href="php/update.php?<?php echo "id=$newid&x=1"?>">$<?php echo $debt?></a></td>
                                                     
                                                 </tr>
                                                          <?php }?>
