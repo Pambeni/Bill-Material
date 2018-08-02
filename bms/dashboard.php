@@ -69,7 +69,39 @@
         
     .modal-footer .btn-group:last-child > button {
         border-right: 0;
-    }</style>
+    }
+    b {
+	border: none;
+	
+	color: #f2f2f2;
+	padding: 10px;
+	font-size: 18px;
+	border-radius: 5px;
+	position: relative;
+	box-sizing: border-box;
+	transition: all 500ms ease; 
+}
+@keyframes bounce {
+	0%, 20%, 60%, 100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	40% {
+		-webkit-transform: translateY(-20px);
+		transform: translateY(-20px);
+	}
+
+	80% {
+		-webkit-transform: translateY(-10px);
+		transform: translateY(-10px);
+	}
+}
+b:hover {
+	animation: bounce 1s;
+}
+    
+    </style>
 </head>
  
 <body>
@@ -98,7 +130,7 @@
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                            <?php echo $_SESSION['name'] ?>
-                            <b class="caret"></b>
+                            <strong class="caret"></strong>
                         </a>
                         <div class="collapse" id="collapseExample">
                             <ul class="nav">
@@ -133,7 +165,7 @@
                         <a data-toggle="collapse" href="#pagesExamples">
                             <i class="fa fa-briefcase"></i>
                             <p>Client Management
-                                <b class="caret"></b>
+                                <strong class="caret"></strong>
                             </p>
                         </a>
                         <div class="collapse" id="pagesExamples">
@@ -235,7 +267,7 @@
                     
                    
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6">
+                        <b class="col-lg-3 col-md-6 col-sm-6">
                                 <a  data-toggle="modal" data-target="#squarespaceModal"><div class="card card-stats">
                                 <div class="card-header" data-background-color="orange">
                                     <i class="material-icons">weekend</i>
@@ -251,8 +283,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
+                        </b>
+                        <b class="col-lg-3 col-md-6 col-sm-6">
                                 <a  data-toggle="modal" data-target="#squarespaceModal3"> <div class="card card-stats">
                                 <div class="card-header" data-background-color="rose">
                                     <i class="material-icons">equalizer</i>
@@ -268,8 +300,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
+                        </b>
+                        <b class="col-lg-3 col-md-6 col-sm-6">
                                 <a href="payments.html"> <div class="card card-stats">
                                 <div class="card-header" data-background-color="green">
                                     <i class="fa fa-dollar"></i>
@@ -285,8 +317,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
+                        </b>
+                        <b class="col-lg-3 col-md-6 col-sm-6">
                                 <a href="user.html"> <div class="card card-stats">
                                 <div class="card-header" data-background-color="blue">
                                     <i class="fa fa-user"></i>
@@ -302,7 +334,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </b>
                     </div>
                     <div class="row">
                             <div class="col-md-12">
@@ -359,7 +391,7 @@
                   <button type="button" id="delImage" class="btn btn-default btn-hover-orange" data-dismiss="modal"  role="button">Delete</button>
                   </div>
                   <div class="btn-group" role="group">
-                  <button type="submit" id="saveImage" class="btn btn-info btn-hover-green" data-action="save" role="button">Save</button>
+                  <button type="submit" id="saveImage" class="btn btn-info btn-hover-green" data-action="save" role="button">Proceed</button>
                   </div>
                   </div>
                   </div>
@@ -395,7 +427,7 @@
                      <button type="button" id="delImage" class="btn btn-default btn-hover-orange" data-dismiss="modal"  role="button">Delete</button>
                      </div>
                      <div class="btn-group" role="group">
-                     <button type="submit" id="saveImage" class="btn btn-info btn-hover-green" data-action="save" role="button">Save</button>
+                     <button type="submit" id="saveImage" class="btn btn-info btn-hover-green" data-action="save" role="button">proceed</button>
                      </div>
                      </div>
                      </div>

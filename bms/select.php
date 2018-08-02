@@ -362,7 +362,7 @@ if(isset($_GET['x'])) {
                      </div>
                      <div class="modal-body">
                         <!-- content goes here -->
-                        <form action="billboards.html">
+                        <form action="billboards.php">
                            <div class="form-group">
                               <label for="exampleInputEmail1">Select Scheme</label>
                               <select name="scheme" class="form-control selectpicker">

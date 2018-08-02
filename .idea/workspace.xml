@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f526a13-2661-492a-9137-af02a1b4126c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/examples/billboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/examples/billboards.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/billboards.php" beforeDir="false" afterPath="$PROJECT_DIR$/examples/billboards.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/examples/calendar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/examples/charts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/components/buttons.html" beforeDir="false" afterPath="$PROJECT_DIR$/examples/components/buttons.html" afterDir="false" />
